@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sistema de Voluntários</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="login-container">
+    <h2>Login</h2>
+    <input type="text" id="usuario" placeholder="Usuário" />
+    <input type="password" id="senha" placeholder="Senha" />
+    <button onclick="login()">Entrar</button>
+    <button onclick="mostrarCadastro()" class="botao-secundario">Cadastrar novo login</button>
+    <p id="login-erro"></p>
+  </div>
+
+  <div id="cadastro-login-container" style="display:none">
+    <h2>Criar Conta</h2>
+    <input type="text" id="novoUsuario" placeholder="Usuário" />
+    <input type="email" id="novoEmail" placeholder="Email" />
+    <input type="password" id="novaSenha" placeholder="Senha" />
+    <input type="password" id="confirmarSenha" placeholder="Confirmar Senha" />
+    <button onclick="criarConta()">Cadastrar</button>
+    <button onclick="voltarLoginDeCadastro()" class="botao-secundario">Voltar ao login</button>
+    <p id="erro-cadastro"></p>
+  </div>
+
+  <div id="app" style="display:none">
+    <nav>
+      <div class="nav-esquerda">
+        <button onclick="mostrarSecao('cadastro')">Cadastro de Voluntário</button>
+        <button onclick="mostrarSecao('lista')">Lista de Voluntários</button>
+      </div>
+      <div class="nav-direita">
+        <span id="tempo-clima"></span>
+        <button onclick="voltarLogin()">Sair</button>
+      </div>
+    </nav>
+
+    <section id="cadastro" style="display:none">
+      <h2>Cadastrar Voluntário</h2>
+      <input type="text" id="nome" placeholder="Nome">
+      <input type="email" id="email" placeholder="Email">
+      <input type="text" id="cep" placeholder="CEP" maxlength="8" oninput="buscarCEP(this.value)">
+      <p id="endereco"></p>
+      <button onclick="cadastrarVoluntario()">Cadastrar</button>
+      <p id="erro-cadastro"></p>
+    </section>
+
+    <section id="lista" style="display:none">
+      <h2>Lista de Voluntários</h2>
+      <input type="text" id="filtro" placeholder="Filtrar por nome" oninput="filtrarVoluntarios()">
+      <button onclick="limparTudo()">Limpar Tudo</button>
+      <div id="voluntarios"></div>
+    </section>
+  </div>
+
+  <script src="login.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
